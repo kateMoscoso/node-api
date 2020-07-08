@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kateMoscoso/node-api#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.5.0",
     "chalk": "^4.1.0",
     "debug": "^4.1.1",
@@ -35,7 +36,9 @@
   },
   "nodemonConfig": {
     "restartable": "rs",
-    "ignore": ["node_modules/**/node_modules"],
+    "ignore": [
+      "node_modules/**/node_modules"
+    ],
     "delay": "2500",
     "env": {
       "NODE_ENV": "development",

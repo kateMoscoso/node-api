@@ -3,12 +3,15 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
+const bodyParser = require('body-parser');
+const { response } = require('express');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // middlewares
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('combined'));
 
 app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));
@@ -18,6 +21,9 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist/js
 app.get('/', (req, res) => {
   // res.sendFile(__dirname + '/views/index.html')
   res.sendFile(path.join(__dirname, '/views/index.html'));
+});
+app.get('/message', (req, res) => {
+  response.success(req, res, '');
 });
 
 app.get('/api/courses', (req, res) => {
