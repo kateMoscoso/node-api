@@ -5,7 +5,12 @@ const response = require('../../network/response');
 const controller = require('./controller');
 
 router.get('/message', (req, res) => {
-  response.success(req, res, '');
+  controller.getMessages()
+  .then((messageList) =>{
+    response.success(req, res, messageList, 200);
+  })
+  .catch(() => {})
+  response.error(req, res, '', 500, '');
 });
 
 router.post('/', (req, res) => {
