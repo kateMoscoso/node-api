@@ -4,7 +4,7 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
-const router = require('./components/message/network');
+const router = require('./network/routes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 // middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(router);
+router(app);
 app.use(morgan('combined'));
 
 app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));
