@@ -1,0 +1,30 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.2.0",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "mocha": "^8.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kateMoscoso/node-api.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "katherin Moscoso",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kateMoscoso/node-api/issues"
+  },
+  "homepage": "https://github.com/kateMoscoso/node-api#readme"
+}
