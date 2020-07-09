@@ -1,4 +1,5 @@
-const list = []
+const db = require('mongoose');
+
 
 function addMessage(message) {
     list.push(message);
