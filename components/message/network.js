@@ -4,7 +4,7 @@ const router = express.Router();
 const response = require('../../network/response');
 const controller = require('./controller');
 
-router.get('/message', (req, res) => {
+router.get('/', (req, res) => {
   controller.getMessages()
   .then((messageList) =>{
     response.success(req, res, messageList, 200);

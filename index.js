@@ -9,6 +9,11 @@ const { config } = require('./config/index');
 const moviesApi = require('./routes/movies.js');
 const app = express();
 const port = process.env.PORT || 3000;
+const {
+  logErrors,
+  errorHandler
+} = require('./utils/middleware/errorHandlers.js');
+
 
 // middlewares
 app.use(bodyParser.json());
@@ -26,5 +31,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
+app.use(logErrors);
+app.use(errorHandler);
 app.listen(port, () => debug(`Listening port ${chalk.green(port)}`));
 // export PORT 5000
