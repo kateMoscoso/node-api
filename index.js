@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const {
   logErrors,
   errorHandler
-} = require('./utils/middleware/errorHandlers.js');
+} = require('./utils/middlewares/errorHandlers.js');
 
 
 // middlewares
