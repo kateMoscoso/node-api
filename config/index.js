@@ -8,6 +8,9 @@ const config = {
   dbPassword: process.env.DB_PASSWORD,
   dbHost: process.env.DB_HOST,
   dbName: process.env.DB_NAME,
+  cryptoKey: process.env.CRYPTO_KEY,
+  cryptoAlgo: process.env.CRYPTO_ALGO,
+  iv: process.env.IV,
 };
 
 module.exports = { config };
