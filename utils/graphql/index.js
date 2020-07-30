@@ -1,4 +1,4 @@
-const { buildSchema } = require('graphql');
+const { makeExecutableSchema } = require('graphql-tools')
 const { graphqlHTTP } = require('express-graphql');
 const resolvers = require('./resolvers');
 const { readFileSync } = require('fs');
@@ -6,13 +6,11 @@ const path = require('path');
 
 
 const graphql = function (app) {
-    
-const schema = buildSchema(
-    readFileSync(
-      path.join(__dirname, './', 'schema.graphql'),
-      'utf-8'
-    )
+  const typeDefs = readFileSync(
+    path.join(__dirname, './', 'schema.graphql'),
+    'utf-8'
   )
+  const schema = makeExecutableSchema({ typeDefs, resolvers })
   
   app.use('/graphql', graphqlHTTP({
     schema: schema,
