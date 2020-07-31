@@ -1,5 +1,6 @@
 const express = require('express');
 const chalk = require('chalk');
+const cors = require('cors');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
@@ -8,6 +9,7 @@ const router = require('./network/routes');
 const { config } = require('./config/index');
 const moviesApi = require('./routes/movies.js');
 const graphql = require('./utils/graphql/index.js');
+const db = require('./db');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,8 +17,10 @@ const {
   logErrors,
   errorHandler
 } = require('./utils/middlewares/errorHandlers.js');
+db(config.uriDb);
 
 // middlewares
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 router(app);
