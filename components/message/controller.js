@@ -1,15 +1,23 @@
 const store = require("./store");
 const { list } = require("./store");
+const { config } = require('../../config');
 
-function addMessage(user, message) {
+function addMessage(chat, user, message, file) {
   return new Promise((resolve, reject) => {
-    if (!user || !message) {
-      return reject();
+    if (!chat || !user || !message) {
+      reject("Wrong data");
+      return false;
+    }
+    let fileUrl = ''
+    if(file) {
+      fileUrl = `http://localhost:${config.port}/app/files/${file.filename}`
     }
     const fullMessage = {
+      chat,
       user,
       message,
       date: new Date(),
+      file: fileUrl
     };
     store.add(fullMessage);
     resolve(fullMessage);

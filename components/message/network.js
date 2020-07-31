@@ -6,11 +6,11 @@ const response = require("../../network/response");
 const controller = require("./controller");
 
 const upload = multer({
-  dest: 'uploads/'
+  dest: 'public/files/'
 })
 
 router.get("/", (req, res) => {
-  const filterMessage = req.query.user || null;
+  const filterMessage = req.query.chat || null;
   controller
     .getMessages(filterMessage)
     .then((messageList) => {
@@ -23,12 +23,12 @@ router.get("/", (req, res) => {
 
 router.post("/", upload.single('file'), (req, res) => {
   controller
-    .addMessage(req.body.user, req.body.message)
-    .then(() => {
-      response.success(req, res, "Creado correctamentte", 201);
+    .addMessage(req.body.chat, req.body.user, req.body.message, req.file)
+    .then((fullMessage) => {
+      response.success(req, res, fullMessage, 201);
     })
     .catch((e) => {
-      response.error(req, res, "", 400, "error");
+      response.error(req, res, "Información invalida", 400, "error");
     });
 });
 
