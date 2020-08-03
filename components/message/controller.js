@@ -1,6 +1,6 @@
 const store = require("./store");
-const { list } = require("./store");
-const { config } = require('../../config');
+const { config } = require("../../config");
+const socket = require("../../socket").socket;
 
 function addMessage(chat, user, message, file) {
   return new Promise((resolve, reject) => {
@@ -8,18 +8,21 @@ function addMessage(chat, user, message, file) {
       reject("Wrong data");
       return false;
     }
-    let fileUrl = ''
-    if(file) {
-      fileUrl = `http://localhost:${config.port}/app/files/${file.filename}`
+    let fileUrl = "";
+    if (file) {
+      fileUrl = `http://localhost:${config.port}/app/files/${file.filename}`;
     }
     const fullMessage = {
       chat,
       user,
       message,
       date: new Date(),
-      file: fileUrl
+      file: fileUrl,
     };
     store.add(fullMessage);
+
+    socket.io.emit("message", fullMessage);
+    
     resolve(fullMessage);
   });
 }
@@ -60,5 +63,5 @@ module.exports = {
   addMessage,
   getMessages,
   updateMessage,
-  deleteMessage
+  deleteMessage,
 };

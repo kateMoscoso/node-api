@@ -11,7 +11,8 @@ const config = {
   cryptoKey: process.env.CRYPTO_KEY,
   cryptoAlgo: process.env.CRYPTO_ALGO,
   iv: process.env.IV,
-  uriDb: process.env.URI
+  uriDb: process.env.URI,
+  publicRoute: process.env.PUBLIC_ROUTE || '/app'
 };
 
 module.exports = { config };
