@@ -1,14 +1,14 @@
-const store = require("./store");
-const { config } = require("../../config");
-const socket = require("../../socket").socket;
+const store = require('./store');
+const { config } = require('../../config');
+const socket = require('../../socket').socket;
 
 function addMessage(chat, user, message, file) {
   return new Promise((resolve, reject) => {
     if (!chat || !user || !message) {
-      reject("Wrong data");
+      reject('Wrong data');
       return false;
     }
-    let fileUrl = "";
+    let fileUrl = '';
     if (file) {
       fileUrl = `http://localhost:${config.port}/app/files/${file.filename}`;
     }
@@ -21,8 +21,8 @@ function addMessage(chat, user, message, file) {
     };
     store.add(fullMessage);
 
-    socket.io.emit("message", fullMessage);
-    
+    socket.io.emit('message', fullMessage);
+
     resolve(fullMessage);
   });
 }
@@ -35,7 +35,7 @@ function getMessages(filterUser) {
 function updateMessage(id, message) {
   return new Promise(async (resolve, reject) => {
     if (!id || !message) {
-      reject("Invalid data");
+      reject('Invalid data');
       return false;
     }
     const result = await store.updateText(id, message);
@@ -45,7 +45,7 @@ function updateMessage(id, message) {
 function deleteMessage(id) {
   return new Promise((resolve, reject) => {
     if (!id) {
-      reject("Id invalido");
+      reject('Id invalido');
       return false;
     }
 

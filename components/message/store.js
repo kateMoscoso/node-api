@@ -1,4 +1,4 @@
-const Model = require("./model");
+const Model = require('./model');
 
 function addMessage(message) {
   const myMessage = new Model(message);
@@ -11,7 +11,7 @@ async function getMessages(filterUser) {
       filter = filterUser;
     }
     Model.find(filter)
-      .populate("user")
+      .populate('user')
       .exec((error, populated) => {
         if (error) {
           reject(error);
