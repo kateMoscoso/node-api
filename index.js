@@ -15,7 +15,6 @@ const graphql = require('./utils/graphql/index.js');
 const db = require('./db');
 const socket = require('./socket');
 
-
 const port = process.env.PORT || 3000;
 const {
   logErrors,

@@ -6,20 +6,20 @@ const statusMessages = {
 }
 
 exports.success = function (req, res, message, status) {
-  let statusCode = status || 200;
-  let statusMessage = message || statusMessages[status];
-  
-  res.status(statusCode).send({ 
-      error: '',
-      body: statusMessage
+  const statusCode = status || 200;
+  const statusMessage = message || statusMessages[status];
+
+  res.status(statusCode).send({
+    error: '',
+    body: statusMessage
   });
 }
 
 exports.error = function (req, res, message, status, details) {
-  console.error('[response error] ' + details);
+  debug('[response error] ' + details);
 
-  res.status(status || 500).send({ 
-      error: message,
-      body: '',
+  res.status(status || 500).send({
+    error: message,
+    body: '',
   });
 }

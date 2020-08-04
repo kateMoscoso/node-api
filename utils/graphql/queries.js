@@ -1,10 +1,10 @@
-"use strict";
-const MongoLib = require("../../lib/mongo");
-const collection = "courses";
+'use strict';
+const MongoLib = require('../../lib/mongo');
+const collection = 'courses';
 const mongoDB = new MongoLib();
 
 const getCourses = async () => {
-  const courses = await mongoDB.getAll(collection, "");
+  const courses = await mongoDB.getAll(collection, '');
   return courses;
 };
 

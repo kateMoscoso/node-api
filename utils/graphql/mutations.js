@@ -1,12 +1,12 @@
-"use strict";
-const MongoLib = require("../../lib/mongo");
-const collection = "courses";
+'use strict';
+const MongoLib = require('../../lib/mongo');
+const collection = 'courses';
 const mongoDB = new MongoLib();
 
 const createCourse = async (root, { input }) => {
   const defaults = {
-    teacher: "",
-    topic: "",
+    teacher: '',
+    topic: '',
   };
 
   const newCourse = Object.assign(defaults, input);
