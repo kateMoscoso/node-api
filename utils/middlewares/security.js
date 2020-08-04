@@ -1,5 +1,5 @@
-const crypto = require("crypto");
-const config = require("../../config/index.js");
+const crypto = require('crypto');
+const config = require('../../config/index.js');
 
 const createIV = function () {
   return crypto.randomBytes(16);
@@ -14,7 +14,7 @@ const encrypt = function (toEncrypt) {
     config.iv
   );
 
-  return cipher.update(toEncrypt, "utf8", "hex") + cipher.final("hex");
+  return cipher.update(toEncrypt, 'utf8', 'hex') + cipher.final('hex');
 };
 
 const decrypt = function (toDecrypt) {
@@ -23,7 +23,7 @@ const decrypt = function (toDecrypt) {
     config.cryptoKey,
     config.iv
   );
-  return decipher.update(toDecrypt, "hex", "utf8") + decipher.final("utf8");
+  return decipher.update(toDecrypt, 'hex', 'utf8') + decipher.final('utf8');
 };
 
 module.exports = { encrypt, decrypt };
