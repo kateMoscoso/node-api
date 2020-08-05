@@ -1,5 +1,7 @@
 const express = require('express');
 const MoviesService = require('../services/movies');
+const { createMovieSchema } = require('../utils/schemas/movies');
+const { validationHandler } = require('../utils/middlewares/validationHandler');
 
 const cacheResponse = require('../utils/cacheResponse');
 const {
@@ -45,7 +47,7 @@ function moviesApi(app) {
     }
   });
 
-  router.post('/', async function (req, res, next) {
+  router.post('/', validationHandler(createMovieSchema), async function (req, res, next) {
     const { body: movie } = req;
     try {
       const createdMovieId = await moviesService.createMovie({ movie });

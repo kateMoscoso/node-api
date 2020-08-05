@@ -9,5 +9,5 @@ const httpsOption = {
 }
 
 https.createServer(httpsOption, app).listen(config.port, function () {
-  debug('')
+  //console.log('')
 })
