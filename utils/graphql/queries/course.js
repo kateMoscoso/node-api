@@ -1,9 +1,7 @@
 'use strict';
-const MongoLib = require('../../lib/mongo');
+const MongoLib = require('../../../lib/mongo');
 const collection = 'courses';
 const mongoDB = new MongoLib();
-
-const { getStudents, getStudent } = require('./queries/students')
 
 const getCourses = async () => {
   const courses = await mongoDB.getAll(collection, '');
@@ -18,6 +16,4 @@ const getCourse = async (root, args) => {
 module.exports = {
   getCourses,
   getCourse,
-  getStudents,
-  getStudent
 };
