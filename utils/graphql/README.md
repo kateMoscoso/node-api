@@ -32,3 +32,12 @@ mutation{
   }
 }
 ```
+
+## Update
+mutation{
+  addPeople(courseID:"5f2400837571933719a6d379",
+    personID:"5f2c415478097163abbf17f0"){
+    _id,
+    title
+  }
+}

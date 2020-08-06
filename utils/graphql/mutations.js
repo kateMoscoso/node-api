@@ -2,6 +2,7 @@
 const MongoLib = require('../../lib/mongo');
 const { ObjectID } = require('mongodb');
 const collection = 'courses';
+const collectionStudent = 'students';
 const mongoDB = new MongoLib();
 
 const createCourse = async (root, { input }) => {
@@ -17,7 +18,7 @@ const createCourse = async (root, { input }) => {
 };
 
 const createStudent = async (root, { input }) => {
-  const id = await mongoDB.create('students', input);
+  const id = await mongoDB.create(collectionStudent, input);
   input._id = id
   return input;
 };
@@ -29,12 +30,12 @@ const editCourse = async (root, { _id, input }) => {
 }
 
 const editStudent = async (root, { _id, input }) => {
-  await mongoDB.update('students', _id, input)
-  const student = await mongoDB.get('students', _id)
+  await mongoDB.update(collectionStudent, _id, input)
+  const student = await mongoDB.get(collectionStudent, _id)
   return student;
 }
 const addPeople = async (root, { courseID, personID }) => {
-  const student = await mongoDB.get('students', personID)
+  const student = await mongoDB.get(collectionStudent, personID)
   const course = await mongoDB.get(collection, courseID)
   if (!student || !course) {
     throw new Error('The student or the course do not exist')
@@ -43,10 +44,23 @@ const addPeople = async (root, { courseID, personID }) => {
   await mongoDB.updateQuery(collection, courseID, { $addToSet: { people: ObjectID(personID) } })
   return course;
 }
+
+const deleteCourse = async (root, { _id }) => {
+  await mongoDB.delete(collection, _id);
+  return true;
+}
+
+const deleteStudent = async (root, { _id }) => {
+  await mongoDB.delete(collectionStudent, _id);
+  return true;
+}
+
 module.exports = {
   createCourse,
   createStudent,
   editCourse,
   editStudent,
-  addPeople
+  addPeople,
+  deleteCourse,
+  deleteStudent
 };
