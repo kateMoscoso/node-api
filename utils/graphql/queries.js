@@ -1,23 +1,8 @@
 'use strict';
-const MongoLib = require('../../lib/mongo');
-const collection = 'courses';
-const mongoDB = new MongoLib();
-
-const { getStudents, getStudent } = require('./queries/students')
-
-const getCourses = async () => {
-  const courses = await mongoDB.getAll(collection, '');
-  return courses;
-};
-
-const getCourse = async (root, args) => {
-  const course = await mongoDB.get(collection, args.id);
-  return course;
-};
+const studentsQueries = require('./queries/students')
+const coursesQueries = require('./queries/courses')
 
 module.exports = {
-  getCourses,
-  getCourse,
-  getStudents,
-  getStudent
+  ...coursesQueries,
+  ...studentsQueries
 };

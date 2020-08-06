@@ -1,5 +1,6 @@
 'use strict';
 const MongoLib = require('../../lib/mongo');
+const { ObjectID } = require('mongodb');
 const collection = 'courses';
 const mongoDB = new MongoLib();
 
@@ -32,9 +33,20 @@ const editStudent = async (root, { _id, input }) => {
   const student = await mongoDB.get('students', _id)
   return student;
 }
+const addPeople = async (root, { courseID, personID }) => {
+  const student = await mongoDB.get('students', personID)
+  const course = await mongoDB.get(collection, courseID)
+  if (!student || !course) {
+    throw new Error('The student or the course do not exist')
+  }
+
+  await mongoDB.updateQuery(collection, courseID, { $addToSet: { people: ObjectID(personID) } })
+  return course;
+}
 module.exports = {
   createCourse,
   createStudent,
   editCourse,
-  editStudent
+  editStudent,
+  addPeople
 };
