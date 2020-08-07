@@ -34,6 +34,8 @@ mutation{
 ```
 
 ## Update
+
+```
 mutation{
   addPeople(courseID:"5f2400837571933719a6d379",
     personID:"5f2c415478097163abbf17f0"){
@@ -41,3 +43,27 @@ mutation{
     title
   }
 }
+
+```
+## Variable
+
+```
+
+mutation addPersonToCourse2($course: ID!, $person: ID!) {
+  addPeople(courseID: $course, personID: $person) {
+    _id
+    title
+  }
+}
+```
+```
+query getCourse2 ($course: ID!){
+  getCourse(id: $course){
+    _id,
+    title,
+    people{
+      name
+    }
+  }
+}
+```
