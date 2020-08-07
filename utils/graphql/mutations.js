@@ -17,7 +17,7 @@ const createCourse = async (root, { input }) => {
   return newCourse;
 };
 
-const createStudent = async (root, { input }) => {
+const createPerson = async (root, { input }) => {
   const id = await mongoDB.create(collectionStudent, input);
   input._id = id
   return input;
@@ -29,7 +29,7 @@ const editCourse = async (root, { _id, input }) => {
   return course;
 }
 
-const editStudent = async (root, { _id, input }) => {
+const editPerson = async (root, { _id, input }) => {
   await mongoDB.update(collectionStudent, _id, input)
   const student = await mongoDB.get(collectionStudent, _id)
   return student;
@@ -57,9 +57,9 @@ const deleteStudent = async (root, { _id }) => {
 
 module.exports = {
   createCourse,
-  createStudent,
+  createPerson,
   editCourse,
-  editStudent,
+  editPerson,
   addPeople,
   deleteCourse,
   deleteStudent

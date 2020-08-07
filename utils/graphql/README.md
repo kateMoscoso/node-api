@@ -67,3 +67,22 @@ query getCourse2 ($course: ID!){
   }
 }
 ```
+
+Enums
+Los Enums o enumeration types son tipos de datos escalares cuyos valores son configurables. Si definimos un tipo de dato como enum sus valores posibles solamente serán aquellos que se encuentren entre los definidos en el enum.
+
+```
+mutation CreateNewCourse($createinput)
+```
+
+Interfaces - Tipo Monitor
+Las interfaces son muy importantes y útiles cuando nos encontramos con tipos de datos similares. Una interfaz nos permite definir un tipo de dato padre que utilizando la palabra implements va a implementar los campos que tenga definidos dentro del tipo de dato que queramos.
+
+Directivas
+Las directivas son una instrucción que permite agregar condicionales a nuestras peticiones. Podemos modificar de manera dinámica nuestra query simplemente añadiendo:
+
+```
+@include(if: Boolean) {
+  datos
+}
+```

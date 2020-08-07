@@ -11,9 +11,18 @@ const people = async ({ people }) => {
     [];
   return peopleData;
 }
+const resolveType = (person, context, info) => {
+  if (person.phone) {
+    return 'Monitor'
+  }
+  return 'Student'
+}
 
 module.exports = {
   Course: {
     people
+  },
+  Person: {
+    __resolveType: resolveType
   }
 }

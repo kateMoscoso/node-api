@@ -3,17 +3,17 @@ const MongoLib = require('../../../lib/mongo');
 const collection = 'students';
 const mongoDB = new MongoLib();
 
-const getStudents = async () => {
+const getPeople = async () => {
   const students = await mongoDB.getAll(collection, '');
   return students;
 };
 
-const getStudent = async (root, args) => {
+const getPerson = async (root, args) => {
   const student = await mongoDB.get(collection, args.id);
   return student;
 };
 
 module.exports = {
-  getStudents,
-  getStudent,
+  getPeople,
+  getPerson,
 };
