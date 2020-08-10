@@ -11,9 +11,18 @@ const people = async ({ people }) => {
     [];
   return peopleData;
 }
-const resolveType = (person, context, info) => {
+const personResolveType = (person, context, info) => {
   if (person.phone) {
     return 'Monitor'
+  }
+  return 'Student'
+}
+
+const globalSearchResolveType = (item, context, info) => {
+  if (item.title) {
+    return 'Course';
+  } else if (item.phone) {
+    return 'Monitor';
   }
   return 'Student'
 }
@@ -23,6 +32,10 @@ module.exports = {
     people
   },
   Person: {
-    __resolveType: resolveType
+    __resolveType: personResolveType
+  },
+  GlobalSearch: {
+    __resolveType: globalSearchResolveType
+
   }
 }

@@ -86,3 +86,24 @@ Las directivas son una instrucción que permite agregar condicionales a nuestras
   datos
 }
 ```
+
+query getPeopleData ($monitor: Boolean!) {
+  getPeople{
+    _id,
+    name,
+    ...on Monitor @include(if: $monitor) {
+      phone
+    }
+  }
+}
+
+Unions
+Unions permite agrupar varios custom types sin importar si tienen algo en común, su sintaxis es la siguiente:
+
+union SearchResult = CustomType1 | CustomType2 | CustomType3
+Al momento de realizar una query que retorna una union podemos identificar el tipo de dato solicitando el campo __typename.
+
+crear indices
+> db.courses.createIndex({"$**": "text"})
+
+https://tools.ietf.org/html/rfc7519
