@@ -14,6 +14,7 @@ const moviesApi = require('./routes/movies.js');
 const graphql = require('./utils/graphql/index.js');
 const db = require('./db');
 const socket = require('./socket');
+const swaggerUi = require('swagger-ui-express');
 
 const port = process.env.PORT || 3000;
 const {
@@ -33,6 +34,10 @@ socket.connect(server);
 router(app);
 moviesApi(app);
 graphql(app);
+
+const swaggerDoc = require('./swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 app.use(morgan('combined'));
 
