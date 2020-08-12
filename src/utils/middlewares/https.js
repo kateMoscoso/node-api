@@ -8,6 +8,6 @@ const httpsOption = {
   cert: fs.readFileSync(path.resolve(__dirname, './artifacts/cert/server.crt'))
 }
 
-https.createServer(httpsOption, app).listen(config.port, function () {
+https.createServer(httpsOption, app).listen(config.api.port, function () {
   //console.log('')
 })

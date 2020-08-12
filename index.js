@@ -8,11 +8,11 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
-const router = require('./network/routes');
-const { config } = require('./config/index');
-const moviesApi = require('./routes/movies.js');
-const graphql = require('./utils/graphql/index.js');
-const db = require('./db');
+const router = require('./src/routes/routes');
+const { config } = require('./src/config');
+const moviesApi = require('./src/components/movies/routes');
+const graphql = require('./src/utils/graphql/index.js');
+const db = require('./src/lib/db');
 const socket = require('./socket');
 const swaggerUi = require('swagger-ui-express');
 
@@ -20,9 +20,9 @@ const port = process.env.PORT || 3000;
 const {
   logErrors,
   errorHandler
-} = require('./utils/middlewares/errorHandlers.js');
+} = require('./src/utils/middlewares/errorHandlers.js');
 
-db(config.uriDb);
+db(config.db.uriDb);
 
 // middlewares
 app.use(cors());
@@ -53,5 +53,5 @@ app.get('/', (req, res) => {
 app.use(logErrors);
 app.use(errorHandler);
 
-app.use(config.publicRoute, express.static('public'));
+app.use(config.api.publicRoute, express.static('public'));
 server.listen(port, () => debug(`Listening port ${chalk.green(port)}`));

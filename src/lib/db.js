@@ -5,8 +5,6 @@ async function connect(url) {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   });
-
-  //debug('[db] Conectada con éxito');
 }
 
 module.exports = connect;

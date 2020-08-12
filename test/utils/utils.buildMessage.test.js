@@ -1,5 +1,5 @@
 const assert = require('assert');
-const buildMessage = require('../../utils/buildMessage');
+const buildMessage = require('../../src/utils/buildMessage');
 
 describe('utils - buildMessage', function () {
   describe('when receives an entity and an action', function () {

@@ -1,13 +1,13 @@
 const assert = require('assert');
 const proxyquire = require('proxyquire');
 
-const { MongoLibMock, getAllStub } = require('../../utils/mocks/mongoLib');
+const { MongoLibMock, getAllStub } = require('../../src/utils/mocks/mongoLib');
 
-const { moviesMock } = require('../../utils/mocks/movies');
+const { moviesMock } = require('../../src/utils/mocks/movies');
 
 describe('services - movies', function () {
-  const MoviesServices = proxyquire('../../services/movies', {
-    '../lib/mongo': MongoLibMock,
+  const MoviesServices = proxyquire('../../src/components/movies/service', {
+    '../../lib/mongo': MongoLibMock,
   });
 
   const moviesService = new MoviesServices();

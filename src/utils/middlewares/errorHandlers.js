@@ -1,7 +1,7 @@
 const { config } = require('../../config');
 
 function withErrorStack(error, stack) {
-  if (config.dev) {
+  if (config.api.dev) {
     return { error, stack };
   }
 
