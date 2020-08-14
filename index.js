@@ -12,7 +12,7 @@ const router = require('./src/routes/routes');
 const { config } = require('./src/config');
 const moviesApi = require('./src/components/movies/routes');
 const graphql = require('./src/utils/graphql/index.js');
-const db = require('./src/lib/db');
+const db = require('./src/store/mongoose');
 const socket = require('./socket');
 const swaggerUi = require('swagger-ui-express');
 

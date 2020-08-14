@@ -1,5 +1,5 @@
 'use strict';
-const MongoLib = require('../../../lib/mongo');
+const MongoLib = require('../../../store/mongo');
 const collection = 'courses';
 const mongoDB = new MongoLib();
 

@@ -7,7 +7,7 @@ const { moviesMock } = require('../../src/utils/mocks/movies');
 
 describe('services - movies', function () {
   const MoviesServices = proxyquire('../../src/components/movies/service', {
-    '../../lib/mongo': MongoLibMock,
+    '../../store/mongo': MongoLibMock,
   });
 
   const moviesService = new MoviesServices();

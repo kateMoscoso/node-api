@@ -1,7 +1,7 @@
 'use strict';
 const studentsQueries = require('./queries/students')
 const coursesQueries = require('./queries/courses')
-const MongoLib = require('../../lib/mongo');
+const MongoLib = require('../../store/mongo');
 const mongoDB = new MongoLib();
 
 const searchItems = async (root, { keyword }) => {

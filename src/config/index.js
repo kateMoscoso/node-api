@@ -21,6 +21,12 @@ const config = {
   cryptoKey: process.env.CRYPTO_KEY,
   cryptoAlgo: process.env.CRYPTO_ALGO,
   iv: process.env.IV,
+  mysql: {
+    host: process.env.MYSQL_HOST || '',
+    user: process.env.MYSQL_USER || '',
+    password: process.env.MYSQL_PASS || '',
+    database: process.env.MYSQL_DB || '',
+  }
 };
 
 module.exports = { config };
