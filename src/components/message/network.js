@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('multer');
 
 const router = express.Router();
-const response = require('../../utils/response');
+const response = require('../../utils/middlewares/response');
 const controller = require('./controller');
 
 const upload = multer({

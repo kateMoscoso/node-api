@@ -3,7 +3,7 @@ const MoviesService = require('./service');
 const { createMovieSchema } = require('../../utils/schemas/movies');
 const { validationHandler } = require('../../utils/middlewares/validationHandler');
 
-const cacheResponse = require('../../utils/cacheResponse');
+const cacheResponse = require('../../utils/middlewares/cacheResponse');
 const {
   FIVE_MINUTES_IN_SECONDS,
   SIXTY_MINUTES_IN_SECONDS,
