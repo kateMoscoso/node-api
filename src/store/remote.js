@@ -1,4 +1,4 @@
-const request = require('request');
+const request = require('request'); //peticiones http sencillas
 
 function createRemoteDB(host, port) {
   const URL = `http://${host}:${port}`;
@@ -13,7 +13,7 @@ function createRemoteDB(host, port) {
 
   function req(method, table, data) {
     const url = URL + '/' + table;
-    body = '';
+    let body;
 
     return new Promise((resolve, reject) => {
       request({

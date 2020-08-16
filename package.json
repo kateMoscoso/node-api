@@ -12,7 +12,10 @@
     "lint:fix": "eslint ./ --fix",
     "coverage": "nyc yarn test",
     "report": "nyc report --reporter=html && open coverage/index.html",
-    "inspect": "DEBUG=express:*,app:* nodemon --inspect index"
+    "inspect": "DEBUG=express:*,app:* nodemon --inspect index",
+    "start-mysql": "DEBUG=express:*,app:* nodemon --inspect src/mysql/index"
+    
+
   },
   "repository": {
     "type": "git",
@@ -48,6 +51,7 @@
     "mysql": "^2.18.1",
     "nanoid": "^3.1.12",
     "nodemon": "^2.0.4",
+    "request": "^2.88.2",
     "socket.io": "^2.3.0",
     "swagger-ui-express": "^4.1.4"
   },
