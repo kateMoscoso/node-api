@@ -30,7 +30,11 @@ const config = {
   mysqlService: {
     port: process.env.MYSQL_SERVICE_PORT || 3001,
     host: process.env.MYSQL_SERVICE_HOST || 'localhost',
-  }
+  },
+  post: {
+    port: process.env.POST_PORT || 3001,
+    host: process.env.POST_HOST || 'localhost',
+  },
 };
 
-module.exports = { config };
+module.exports = config ;

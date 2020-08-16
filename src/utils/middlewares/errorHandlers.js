@@ -1,4 +1,4 @@
-const { config } = require('../../config');
+const config = require('../../config');
 
 function withErrorStack(error, stack) {
   if (config.api.dev) {

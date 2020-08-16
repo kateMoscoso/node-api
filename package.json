@@ -13,8 +13,8 @@
     "coverage": "nyc yarn test",
     "report": "nyc report --reporter=html && open coverage/index.html",
     "inspect": "DEBUG=express:*,app:* nodemon --inspect index",
-    "start-mysql": "DEBUG=express:*,app:* nodemon --inspect src/mysql/index"
-    
+    "start-mysql": "DEBUG=express:*,app:* nodemon --inspect src/mysql/index",
+    "start-post": "DEBUG=express:*,app:* nodemon --inspect src/post/index"
 
   },
   "repository": {
