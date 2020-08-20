@@ -47,6 +47,26 @@ Crearemos el archivo index.js
 Vamos a instalar los paquetes necesarios con npm i jsonwebtoken
 En el index.js vamos a hacer toda la lógica de nuestra aplicación
 
-npm i -g pm2
-pm2 logs
-pm2 start
+
+> npm i -g pm2
+
+> pm2 logs
+
+> pm2 status
+
+> pm2 start
+
+> pm2 start index.js
+
+> pm2 start src/mysql/index.js
+
+> pm2 start src/post/index.js
+
+> pm2 stop id
+
+
+> npm i -g now
+> now
+> now dev
+
+https://redislabs.com/

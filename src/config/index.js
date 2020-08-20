@@ -35,6 +35,11 @@ const config = {
     port: process.env.POST_PORT || 3001,
     host: process.env.POST_HOST || 'localhost',
   },
+  redis: {
+    host: process.env.REDIS_HOST || '',
+    port: process.env.REDIS_PORT || '',
+    password: process.env.REDIS_PASSWORD || ''
+  }
 };
 
 module.exports = config ;
