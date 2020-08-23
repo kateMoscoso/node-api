@@ -70,3 +70,23 @@ En el index.js vamos a hacer toda la lógica de nuestra aplicación
 > now dev
 
 https://redislabs.com/
+
+# Modificar nginx
+
+> sudo apt-get install nginx
+> sudo service nginx start
+> sudo service nginx stop
+> sudo nano /etc/nginx/site-availables/default
+
+location /api/user {
+    proxy_pass http://localhost:3000
+
+}
+location /api/auth {
+    proxy_pass http://localhost:3000
+    
+}
+location /api/post {
+    proxy_pass http://localhost:3001
+    
+}
